@@ -12,6 +12,7 @@ class GFTextField: UITextField {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
 
     required init?(coder: NSCoder) {
@@ -21,7 +22,7 @@ class GFTextField: UITextField {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
 
-        layer.cornerRadius = 1
+        layer.cornerRadius = 10
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemGray4.cgColor
 
