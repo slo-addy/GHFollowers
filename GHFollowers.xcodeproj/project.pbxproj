@@ -13,6 +13,7 @@
 		E554F47823F343170088979E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E554F47723F343170088979E /* Assets.xcassets */; };
 		E554F47B23F343170088979E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E554F47923F343170088979E /* LaunchScreen.storyboard */; };
 		E57AADE823F78FE4006E1A25 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AADE723F78FE4006E1A25 /* GFTextField.swift */; };
+		E57AADEA23FFB46B006E1A25 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AADE923FFB46B006E1A25 /* FollowerListViewController.swift */; };
 		E5B408EE23F718B900DBE0B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B408ED23F718B900DBE0B7 /* SearchViewController.swift */; };
 		E5B408F023F7196100DBE0B7 /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B408EF23F7196100DBE0B7 /* FavoritesListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		E554F47A23F343170088979E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E554F47C23F343170088979E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E57AADE723F78FE4006E1A25 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		E57AADE923FFB46B006E1A25 /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
 		E5B408ED23F718B900DBE0B7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E5B408EF23F7196100DBE0B7 /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +66,7 @@
 				E532BAD323F768F600F74DAE /* GFButton.swift */,
 				E57AADE723F78FE4006E1A25 /* GFTextField.swift */,
 				E5B408EF23F7196100DBE0B7 /* FavoritesListViewController.swift */,
+				E57AADE923FFB46B006E1A25 /* FollowerListViewController.swift */,
 				E5B408ED23F718B900DBE0B7 /* SearchViewController.swift */,
 				E554F47023F343140088979E /* SceneDelegate.swift */,
 				E554F47723F343170088979E /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 				E57AADE823F78FE4006E1A25 /* GFTextField.swift in Sources */,
 				E5B408F023F7196100DBE0B7 /* FavoritesListViewController.swift in Sources */,
 				E532BAD423F768F600F74DAE /* GFButton.swift in Sources */,
+				E57AADEA23FFB46B006E1A25 /* FollowerListViewController.swift in Sources */,
 				E5B408EE23F718B900DBE0B7 /* SearchViewController.swift in Sources */,
 				E554F46F23F343140088979E /* AppDelegate.swift in Sources */,
 				E554F47123F343140088979E /* SceneDelegate.swift in Sources */,

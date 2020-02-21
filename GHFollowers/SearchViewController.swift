@@ -14,6 +14,10 @@ class SearchViewController: UIViewController {
     let usernameTextField = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
 
+    var isUserNameEntered: Bool {
+        return !usernameTextField.text!.isEmpty
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -33,6 +37,18 @@ class SearchViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
 
+    @objc
+    func pushFollowerListViewController() {
+        guard isUserNameEntered else {
+            print("No username!")
+            return
+        }
+        let followerListViewController = FollowerListViewController()
+        followerListViewController.username = usernameTextField.text
+        followerListViewController.title = usernameTextField.text
+        navigationController?.pushViewController(followerListViewController, animated: true)
+    }
+
     func configureLogoImageView() {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +64,7 @@ class SearchViewController: UIViewController {
 
     func configureTextField() {
         view.addSubview(usernameTextField)
+        usernameTextField.delegate = self
 
         NSLayoutConstraint.activate([
             usernameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
@@ -59,6 +76,7 @@ class SearchViewController: UIViewController {
 
     func configureCallToActionButton() {
         view.addSubview(callToActionButton)
+        callToActionButton.addTarget(self, action: #selector(pushFollowerListViewController), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
@@ -67,4 +85,13 @@ class SearchViewController: UIViewController {
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		pushFollowerListViewController()
+        return true
+    }
+
 }
