@@ -13,13 +13,13 @@
 		E554F47823F343170088979E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E554F47723F343170088979E /* Assets.xcassets */; };
 		E554F47B23F343170088979E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E554F47923F343170088979E /* LaunchScreen.storyboard */; };
 		E57AADE823F78FE4006E1A25 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AADE723F78FE4006E1A25 /* GFTextField.swift */; };
-		E57AADEA23FFB46B006E1A25 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AADE923FFB46B006E1A25 /* FollowerListViewController.swift */; };
 		E57AADEE24038077006E1A25 /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AADED24038077006E1A25 /* GFTitleLabel.swift */; };
-		E5B408EE23F718B900DBE0B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B408ED23F718B900DBE0B7 /* SearchViewController.swift */; };
 		E5B408F023F7196100DBE0B7 /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B408EF23F7196100DBE0B7 /* FavoritesListViewController.swift */; };
 		E5EB4FDA2458B3DE00EFA134 /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF8F2A2403870D004E7989 /* GFAlertViewController.swift */; };
 		E5EB4FDE2458B83100EFA134 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB4FDD2458B83100EFA134 /* Follower.swift */; };
 		E5EB4FE02458B8F500EFA134 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB4FDF2458B8F500EFA134 /* User.swift */; };
+		E5EB4FE12458BB6700EFA134 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AADE923FFB46B006E1A25 /* FollowerListViewController.swift */; };
+		E5EB4FE22458BC2500EFA134 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B408ED23F718B900DBE0B7 /* SearchViewController.swift */; };
 		E5FF8F272403858D004E7989 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF8F262403858D004E7989 /* GFBodyLabel.swift */; };
 		E5FF8F2D24039223004E7989 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF8F2C24039223004E7989 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -208,13 +208,13 @@
 				E57AADE823F78FE4006E1A25 /* GFTextField.swift in Sources */,
 				E5B408F023F7196100DBE0B7 /* FavoritesListViewController.swift in Sources */,
 				E532BAD423F768F600F74DAE /* GFButton.swift in Sources */,
-				E57AADEA23FFB46B006E1A25 /* FollowerListViewController.swift in Sources */,
 				E5FF8F272403858D004E7989 /* GFBodyLabel.swift in Sources */,
 				E5EB4FDA2458B3DE00EFA134 /* GFAlertViewController.swift in Sources */,
 				E5FF8F2D24039223004E7989 /* UIViewController+Extensions.swift in Sources */,
 				E5EB4FDE2458B83100EFA134 /* Follower.swift in Sources */,
+				E5EB4FE22458BC2500EFA134 /* SearchViewController.swift in Sources */,
 				E57AADEE24038077006E1A25 /* GFTitleLabel.swift in Sources */,
-				E5B408EE23F718B900DBE0B7 /* SearchViewController.swift in Sources */,
+				E5EB4FE12458BB6700EFA134 /* FollowerListViewController.swift in Sources */,
 				E554F46F23F343140088979E /* AppDelegate.swift in Sources */,
 				E554F47123F343140088979E /* SceneDelegate.swift in Sources */,
 			);
