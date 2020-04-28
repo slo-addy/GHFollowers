@@ -18,6 +18,8 @@
 		E5B408EE23F718B900DBE0B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B408ED23F718B900DBE0B7 /* SearchViewController.swift */; };
 		E5B408F023F7196100DBE0B7 /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B408EF23F7196100DBE0B7 /* FavoritesListViewController.swift */; };
 		E5EB4FDA2458B3DE00EFA134 /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF8F2A2403870D004E7989 /* GFAlertViewController.swift */; };
+		E5EB4FDE2458B83100EFA134 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB4FDD2458B83100EFA134 /* Follower.swift */; };
+		E5EB4FE02458B8F500EFA134 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB4FDF2458B8F500EFA134 /* User.swift */; };
 		E5FF8F272403858D004E7989 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF8F262403858D004E7989 /* GFBodyLabel.swift */; };
 		E5FF8F2D24039223004E7989 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FF8F2C24039223004E7989 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +37,8 @@
 		E57AADED24038077006E1A25 /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
 		E5B408ED23F718B900DBE0B7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E5B408EF23F7196100DBE0B7 /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
+		E5EB4FDD2458B83100EFA134 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		E5EB4FDF2458B8F500EFA134 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E5FF8F262403858D004E7989 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		E5FF8F2A2403870D004E7989 /* GFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertViewController.swift; sourceTree = "<group>"; };
 		E5FF8F2C24039223004E7989 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 		E554F46D23F343140088979E /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				E5EB4FDC2458B82100EFA134 /* Model */,
 				E5EB4FD92457B67800EFA134 /* Custom Views */,
 				E5EB4FD824578D0700EFA134 /* Extensions */,
 				E5EB4FD724578CE800EFA134 /* Screens */,
@@ -118,6 +123,15 @@
 				E554F47723F343170088979E /* Assets.xcassets */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		E5EB4FDC2458B82100EFA134 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E5EB4FDD2458B83100EFA134 /* Follower.swift */,
+				E5EB4FDF2458B8F500EFA134 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5EB4FE02458B8F500EFA134 /* User.swift in Sources */,
 				E57AADE823F78FE4006E1A25 /* GFTextField.swift in Sources */,
 				E5B408F023F7196100DBE0B7 /* FavoritesListViewController.swift in Sources */,
 				E532BAD423F768F600F74DAE /* GFButton.swift in Sources */,
@@ -197,6 +212,7 @@
 				E5FF8F272403858D004E7989 /* GFBodyLabel.swift in Sources */,
 				E5EB4FDA2458B3DE00EFA134 /* GFAlertViewController.swift in Sources */,
 				E5FF8F2D24039223004E7989 /* UIViewController+Extensions.swift in Sources */,
+				E5EB4FDE2458B83100EFA134 /* Follower.swift in Sources */,
 				E57AADEE24038077006E1A25 /* GFTitleLabel.swift in Sources */,
 				E5B408EE23F718B900DBE0B7 /* SearchViewController.swift in Sources */,
 				E554F46F23F343140088979E /* AppDelegate.swift in Sources */,
