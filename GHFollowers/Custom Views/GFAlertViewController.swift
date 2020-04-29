@@ -76,7 +76,8 @@ class GFAlertViewController: UIViewController {
         NSLayoutConstraint.activate([
             actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
             actionButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
-            actionButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
+            actionButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+            actionButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
 
