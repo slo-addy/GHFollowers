@@ -50,7 +50,9 @@ class FollowerListViewController: UIViewController {
     private func getFollowers(username: String, page: Int) {
         showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             self.dismissLoadingView()
 
             switch result {
@@ -59,6 +61,14 @@ class FollowerListViewController: UIViewController {
                     self.hasMoreFollowers = false
                 }
                 self.followers.append(contentsOf: followers)
+
+                if self.followers.isEmpty {
+                    let message = "This user doesn't have any followers. Go follow them 😃."
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                    }
+                    return
+                }
                 self.updateData()
 
                 print("Followers count = \(followers.count)")
@@ -99,7 +109,9 @@ extension FollowerListViewController: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
 
         if offsetY > contentHeight - height {
-            guard hasMoreFollowers else { return }
+            guard hasMoreFollowers else {
+                return
+            }
             page += 1
             getFollowers(username: username, page: page)
         }
