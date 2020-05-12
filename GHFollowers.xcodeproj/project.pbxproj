@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5091DE4246A0B7F00BAE64F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5091DE3246A0B7F00BAE64F /* Date+Extensions.swift */; };
+		E5091DE6246A0BAA00BAE64F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5091DE5246A0BAA00BAE64F /* String+Extensions.swift */; };
 		E531AA772460F27B007889B7 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531AA762460F27B007889B7 /* UIHelper.swift */; };
 		E531AA782460F2EE007889B7 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AADE923FFB46B006E1A25 /* FollowerListViewController.swift */; };
 		E531AA8024636D54007889B7 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531AA7F24636D54007889B7 /* GFEmptyStateView.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E5091DE3246A0B7F00BAE64F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		E5091DE5246A0BAA00BAE64F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E531AA762460F27B007889B7 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		E531AA7F24636D54007889B7 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 		E531AA8124648EEF007889B7 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 		E5EB4FD824578D0700EFA134 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E5091DE3246A0B7F00BAE64F /* Date+Extensions.swift */,
+				E5091DE5246A0BAA00BAE64F /* String+Extensions.swift */,
 				E5FF8F2C24039223004E7989 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
@@ -335,6 +341,7 @@
 				E531AA98246A0152007889B7 /* GFFollowerItemViewController.swift in Sources */,
 				E531AA95246A0072007889B7 /* GFRepoItemViewController.swift in Sources */,
 				E5FF8F2D24039223004E7989 /* UIViewController+Extensions.swift in Sources */,
+				E5091DE4246A0B7F00BAE64F /* Date+Extensions.swift in Sources */,
 				E531AA772460F27B007889B7 /* UIHelper.swift in Sources */,
 				E5EB4FEF245A6C9C00EFA134 /* GFAvatarImageView.swift in Sources */,
 				E531AA8E2469D631007889B7 /* GFItemInfoView.swift in Sources */,
@@ -349,6 +356,7 @@
 				E531AA8224648EEF007889B7 /* UserInfoViewController.swift in Sources */,
 				E531AA912469DA5F007889B7 /* GFItemInfoViewController.swift in Sources */,
 				E554F46F23F343140088979E /* AppDelegate.swift in Sources */,
+				E5091DE6246A0BAA00BAE64F /* String+Extensions.swift in Sources */,
 				E554F47123F343140088979E /* SceneDelegate.swift in Sources */,
 				E531AA922469FF44007889B7 /* GFTitleLabel.swift in Sources */,
 				E531AA96246A00EA007889B7 /* GFButton.swift in Sources */,

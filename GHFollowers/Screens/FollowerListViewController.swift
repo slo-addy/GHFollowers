@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FollowerListViewControllerDelegate: class {
+    func didRequestFollower(for username: String)
+}
+
 class FollowerListViewController: UIViewController {
 
     enum Section {
@@ -40,6 +44,9 @@ class FollowerListViewController: UIViewController {
     private func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
 
     private func configureCollectionView() {
@@ -108,12 +115,18 @@ class FollowerListViewController: UIViewController {
         }
     }
 
+    @objc
+    func addButtonTapped() {
+		print("Add button tapped")
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let activeArray = isSearching ? filteredFollowers : followers
         let follower = activeArray[indexPath.item]
 
         let destinationViewController = UserInfoViewController()
         destinationViewController.username = follower.login
+        destinationViewController.delegate = self
 
         let navigationController = UINavigationController(rootViewController: destinationViewController)
         present(navigationController, animated: true)
@@ -153,6 +166,20 @@ extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelega
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 		isSearching = false
         updateData(on: followers)
+    }
+
+}
+
+extension FollowerListViewController: FollowerListViewControllerDelegate {
+
+    func didRequestFollower(for username: String) {
+        self.username = username
+        title = username
+        page = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(username: username, page: page)
     }
 
 }
