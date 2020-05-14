@@ -15,12 +15,12 @@ class GFItemInfoViewController: UIViewController {
     let itemInfoViewTwo = GFItemInfoView()
     let actionButton = GFButton()
 
-    var user: User!
+    var user: User
     weak var delegate: UserInfoViewControllerDelegate!
 
     init(user: User) {
-        super.init(nibName: nil, bundle: nil)
         self.user = user
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
