@@ -18,14 +18,15 @@ class FollowerListViewController: GFLoadingViewController {
         case main
     }
 
-    var username: String
-    var followers: [Follower] = []
-    var filteredFollowers: [Follower] = []
-    var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-    var page = 1
-    var hasMoreFollowers = true
-    var isSearching = false
+    private var username: String
+    private var followers: [Follower] = []
+    private var filteredFollowers: [Follower] = []
+    private var collectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    private var page = 1
+    private var hasMoreFollowers = true
+    private var isSearching = false
+    private var isLoadingMoreFollowers = false
 
     init(username: String) {
         self.username = username
@@ -61,7 +62,10 @@ class FollowerListViewController: GFLoadingViewController {
     }
 
     private func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.configureThreeColumnFlowLayout(in: view)
+
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
@@ -82,13 +86,14 @@ class FollowerListViewController: GFLoadingViewController {
         let searchController = UISearchController()
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for a username"
         navigationItem.searchController = searchController
     }
 
     private func getFollowers(username: String, page: Int) {
         showLoadingView()
+        isLoadingMoreFollowers = true
+
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else {
                 return
@@ -113,6 +118,8 @@ class FollowerListViewController: GFLoadingViewController {
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
             }
+
+            self.isLoadingMoreFollowers = false
         }
     }
 
@@ -180,7 +187,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
 
         if offsetY > contentHeight - height {
-            guard hasMoreFollowers else {
+            guard hasMoreFollowers == true, isLoadingMoreFollowers == false else {
                 return
             }
             page += 1
@@ -190,20 +197,19 @@ extension FollowerListViewController: UICollectionViewDelegate {
 
 }
 
-extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowerListViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+        guard let filter = searchController.searchBar.text, filter.isEmpty == false else {
+            filteredFollowers.removeAll()
+            updateData(on: followers)
+            isSearching = false
             return
         }
+
 		isSearching = true
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollowers)
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-		isSearching = false
-        updateData(on: followers)
     }
 
 }
@@ -216,8 +222,23 @@ extension FollowerListViewController: FollowerListViewControllerDelegate {
         page = 1
         followers.removeAll()
         filteredFollowers.removeAll()
-        collectionView.setContentOffset(.zero, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
         getFollowers(username: username, page: page)
+    }
+
+}
+
+extension UICollectionViewFlowLayout {
+
+    func configureThreeColumnFlowLayout(in view: UIView) {
+        let width = view.bounds.width
+        let padding: CGFloat = 12
+        let minimumSpacing: CGFloat = 10
+        let availableWidth = width - (padding * 2) - (minimumSpacing * 2)
+        let itemWidth = availableWidth / 3
+
+        sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
     }
 
 }
