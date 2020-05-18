@@ -20,6 +20,8 @@ class GFAlertViewController: UIViewController {
     var message: String?
     var buttonTitle: String?
 
+    // MARK: - Initialization
+
     init(title: String, message: String, buttonTitle: String) {
         super.init(nibName: nil, bundle: nil)
         self.alertTitle = title
@@ -30,6 +32,8 @@ class GFAlertViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,8 @@ class GFAlertViewController: UIViewController {
         configureActionButton()
         configureMessageLabel()
     }
+
+    // MARK: - View Configuration
 
     func configureContainerView() {
         NSLayoutConstraint.activate([
@@ -75,6 +81,11 @@ class GFAlertViewController: UIViewController {
         ])
     }
 
+    @objc
+    private func dismissViewController() {
+        dismiss(animated: true)
+    }
+
     func configureMessageLabel() {
         messageLabel.text = message ?? "Unable to complete request"
         messageLabel.numberOfLines = 4
@@ -87,8 +98,4 @@ class GFAlertViewController: UIViewController {
         ])
     }
 
-    @objc
-    func dismissViewController() {
-        dismiss(animated: true)
-    }
 }

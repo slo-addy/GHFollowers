@@ -32,7 +32,7 @@ class FollowerCell: UICollectionViewCell {
     func set(follower: Follower) {
         usernameLabel.text = follower.login
 
-        NetworkManager.shared.download(from: follower.avatarUrl) { [weak self] image in
+        NetworkManager.shared.downloadImage(fromUrl: follower.avatarUrl) { [weak self] image in
             guard let self = self else {
                 return
             }

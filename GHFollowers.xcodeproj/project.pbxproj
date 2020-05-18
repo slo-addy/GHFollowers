@@ -191,13 +191,13 @@
 		E554F46D23F343140088979E /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
-				E5EB4FE8245A135000EFA134 /* Utilities */,
-				E5EB4FE32458E8A500EFA134 /* Managers */,
-				E5EB4FDC2458B82100EFA134 /* Model */,
 				E5EB4FD92457B67800EFA134 /* Custom Views */,
 				E5EB4FD824578D0700EFA134 /* Extensions */,
+				E5EB4FE32458E8A500EFA134 /* Managers */,
+				E5EB4FDC2458B82100EFA134 /* Model */,
 				E5EB4FD724578CE800EFA134 /* Screens */,
 				E5EB4FDB2458B3FC00EFA134 /* Support */,
+				E5EB4FE8245A135000EFA134 /* Utilities */,
 				E554F47C23F343170088979E /* Info.plist */,
 			);
 			path = GHFollowers;

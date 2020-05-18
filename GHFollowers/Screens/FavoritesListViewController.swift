@@ -33,6 +33,7 @@ class FavoritesListViewController: UIViewController {
 
     private func configureTableView() {
         view.addSubview(tableView)
+        showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: view)
 
         tableView.frame = view.bounds
         tableView.rowHeight = 80
@@ -43,26 +44,31 @@ class FavoritesListViewController: UIViewController {
     }
 
     private func getFavorites() {
-        PersistenceManager.retrieveFavorites { [weak self] result in
+        PersistenceManager.shared.retrieveFavorites { [weak self] result in
             guard let self = self else {
                 return
             }
 
             switch result {
             case .success(let favorites):
-                if favorites.isEmpty {
-                    self.showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
-                }
-                else {
-                    self.favorites = favorites
-
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView)
-                    }
-                }
+                self.updateUIWith(favorites: favorites)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
+    }
+
+    private func updateUIWith(favorites: [Follower]) {
+        if favorites.isEmpty {
+            self.tableView.isHidden = true
+        }
+        else {
+            self.favorites = favorites
+
+            DispatchQueue.main.async {
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+                self.view.bringSubviewToFront(self.tableView)
             }
         }
     }
@@ -95,7 +101,7 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
             return
         }
 
-        PersistenceManager.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
+        PersistenceManager.shared.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
             guard let self = self else {
                 return
             }
@@ -103,6 +109,10 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
             guard let error = error else {
                 self.favorites.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
+
+                if self.favorites.isEmpty {
+                    tableView.isHidden = true
+                }
                 return
             }
 

@@ -13,15 +13,18 @@ enum PersistenceActionType {
     case remove
 }
 
-enum PersistenceManager {
+class PersistenceManager {
 
     enum Keys {
         static let favorites = "favorites"
     }
 
-    static private let defaults = UserDefaults.standard
+    static let shared = PersistenceManager()
+    private let defaults = UserDefaults.standard
 
-    static func updateWith(favorite: Follower, actionType: PersistenceActionType, completion: @escaping (GFError?) -> Void) {
+    private init() {}
+
+    func updateWith(favorite: Follower, actionType: PersistenceActionType, completion: @escaping (GFError?) -> Void) {
         retrieveFavorites { result in
             switch result {
             case .success(var favorites):
@@ -37,14 +40,14 @@ enum PersistenceManager {
                     favorites.removeAll { $0.login == favorite.login }
                 }
 
-                completion(save(favorites: favorites))
+                completion(self.save(favorites: favorites))
             case .failure(let error):
                 completion(error)
             }
         }
     }
 
-    static func retrieveFavorites(completion: @escaping (Result<[Follower], GFError>) -> Void) {
+    func retrieveFavorites(completion: @escaping (Result<[Follower], GFError>) -> Void) {
         guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
             completion(.success([]))
             return
@@ -60,7 +63,7 @@ enum PersistenceManager {
         }
     }
 
-    static func save(favorites: [Follower]) -> GFError? {
+    func save(favorites: [Follower]) -> GFError? {
         do {
             let encoder = JSONEncoder()
             let encodedFavorites = try encoder.encode(favorites)

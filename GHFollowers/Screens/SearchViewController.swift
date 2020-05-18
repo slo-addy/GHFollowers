@@ -18,6 +18,8 @@ class SearchViewController: UIViewController {
         return !usernameTextField.text!.isEmpty
     }
 
+    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -35,22 +37,7 @@ class SearchViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
-    func configureDismissKeyboardTapGesture() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc
-    func pushFollowerListViewController() {
-        guard let username = usernameTextField.text, !username.isEmpty else {
-            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀.", buttonTitle: "Ok")
-            return
-        }
-
-        let followerListViewController = FollowerListViewController(username: username)
-        usernameTextField.resignFirstResponder()
-        navigationController?.pushViewController(followerListViewController, animated: true)
-    }
+    // MARK: - View Configuration
 
     func configureLogoImageView() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -86,6 +73,23 @@ class SearchViewController: UIViewController {
             callToActionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+
+    func configureDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc
+    func pushFollowerListViewController() {
+        guard let username = usernameTextField.text, !username.isEmpty else {
+            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀.", buttonTitle: "Ok")
+            return
+        }
+
+        let followerListViewController = FollowerListViewController(username: username)
+        usernameTextField.resignFirstResponder()
+        navigationController?.pushViewController(followerListViewController, animated: true)
     }
 }
 

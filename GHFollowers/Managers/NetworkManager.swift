@@ -11,6 +11,7 @@ import UIKit
 class NetworkManager {
 
     static let shared = NetworkManager()
+
     private let baseUrl = "https://api.github.com/users/"
     let cache = NSCache<NSString, UIImage>()
 
@@ -95,15 +96,15 @@ class NetworkManager {
         task.resume()
     }
 
-    func download(from urlString: String, completion: @escaping (UIImage?) -> Void) {
-        let cacheKey = NSString(string: urlString)
+    func downloadImage(fromUrl url: String, completion: @escaping (UIImage?) -> Void) {
+        let cacheKey = NSString(string: url)
 
         if let image = cache.object(forKey: cacheKey) {
             completion(image)
             return
         }
 
-        guard let url = URL(string: urlString) else {
+        guard let url = URL(string: url) else {
 			completion(nil)
             return
         }

@@ -19,12 +19,16 @@ class GFUserInfoHeaderViewController: UIViewController {
 
     var user: User!
 
+    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         layoutUI()
         configureUIElements()
     }
+
+    // MARK: - Initialization
 
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
@@ -35,6 +39,8 @@ class GFUserInfoHeaderViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - View Configuration
+
     private func configureUIElements() {
         fetchAvatarImage()
         usernameLabel.text = user.login
@@ -44,18 +50,6 @@ class GFUserInfoHeaderViewController: UIViewController {
         bioLabel.numberOfLines = 0
         locationImageView.image = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
-    }
-
-    private func fetchAvatarImage() {
-        NetworkManager.shared.download(from: user.avatarUrl) { [weak self] image in
-            guard let self = self else {
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.avatarImageView.image = image
-            }
-        }
     }
 
     private func addSubviews() {
@@ -104,6 +98,20 @@ class GFUserInfoHeaderViewController: UIViewController {
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bioLabel.heightAnchor.constraint(equalToConstant: 90)
         ])
+    }
+
+    // MARK: - Data Fetching
+
+    private func fetchAvatarImage() {
+        NetworkManager.shared.downloadImage(fromUrl: user.avatarUrl) { [weak self] image in
+            guard let self = self else {
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.avatarImageView.image = image
+            }
+        }
     }
 
 }
